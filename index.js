@@ -1,8 +1,8 @@
 window.addEventListener('DOMContentLoaded', function() {
     console.log('DOM is loaded');
-    var real = [0,1,2,3];//index 0 is meaningless. it required for calculation.
-    var imag = [0,1,2,3];
-    var size = 3;
+    var real = [0,1,2,3,4];//index 0 is meaningless. it required for calculation.
+    var imag = [0,0,0,0,0];
+    var size = 4;
     let [r,i] = dft(real,imag,size);
     console.log(r);
     console.log(i);
