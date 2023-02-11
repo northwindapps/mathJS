@@ -25,11 +25,15 @@ window.addEventListener('DOMContentLoaded', function() {
                 }
                 X_real[k]=X_real[k]+w_real*x_real[n]-w_imag*x_imag[n];
                 X_imag[k]=X_imag[k]+w_real*x_imag[n]+w_imag*x_real[n];
+                X_real[k]=naiveRound(X_real[k],4);
+                X_imag[k]=naiveRound(X_imag[k],4);
             }
         }
         return [X_real,X_imag];
     }
 
-
-
+    function naiveRound(num, decimalPlaces = 0) {
+    var p = Math.pow(10, decimalPlaces);
+    return Math.round(num * p) / p;
+    }
 });
