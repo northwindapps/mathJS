@@ -1,8 +1,12 @@
 window.addEventListener('DOMContentLoaded', function() {
     console.log('DOM is loaded');
+    //dft_test
     var real = [0,1,2,3,4];//index 0 is meaningless. it required for calculation.
     var imag = [0,0,0,0,0];
     var size = 4;
+    var windowSize = 256;
+    let [w] = hanningWindow(windowSize);
+    console.log(w);
     let [r,i] = dft(real,imag,size);
     console.log(r);
     console.log(i);
@@ -30,6 +34,24 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         }
         return [X_real,X_imag];
+    }
+
+    function hanningWindow(window_size) {
+        var w = [];
+        for (let index = 0; index <= window_size; index++) {
+            w.push(0);
+        }
+        if (window_size%2 == 0) {
+            for (let n = 1; n <= window_size; n++) {   
+                w[n]=0.5-0.5*Math.cos(2*Math.PI*(n-1)/window_size);
+                w[n]=naiveRound(w[n],4);
+            }
+        }else{
+            for (let n = 1; n <= window_size; n++) { 
+                w[n]=0.5-0.5*Math.cos(2*Math.PI*(n-0.5)/window_size);        
+            }
+        }
+        return [w];
     }
 
     function naiveRound(num, decimalPlaces = 0) {
